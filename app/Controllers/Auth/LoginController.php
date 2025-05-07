@@ -27,6 +27,8 @@ class LoginController extends AuthController
         return view()->render($response, 'auth/login.twig', [
             'register_enabled' => $this->getSetting('register_enabled', 'off'),
             'recaptcha_site_key' => $this->getSetting('recaptcha_enabled') === 'on' ? $this->getSetting('recaptcha_site_key') : null,
+            'oauth_enabled' => $this->config['oauth']['enabled'] === true ? true : false,
+            'oauth_name' => $this->config['oauth']['name'] ?? 'OAuth',
         ]);
     }
 

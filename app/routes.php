@@ -2,6 +2,7 @@
 
 use App\Controllers\AdminController;
 use App\Controllers\Auth\LoginController;
+use App\Controllers\Auth\OAuthController;
 use App\Controllers\Auth\PasswordRecoveryController;
 use App\Controllers\Auth\RegisterController;
 use App\Controllers\ClientController;
@@ -79,6 +80,8 @@ $app->get('/recover', [PasswordRecoveryController::class, 'recover'])->setName('
 $app->post('/recover/mail', [PasswordRecoveryController::class, 'recoverMail'])->setName('recover.mail');
 $app->get('/recover/password/{resetToken}', [PasswordRecoveryController::class, 'recoverPasswordForm'])->setName('recover.password.view');
 $app->post('/recover/password/{resetToken}', [PasswordRecoveryController::class, 'recoverPassword'])->setName('recover.password');
+$app->get('/oauth/redirect', [OAuthController::class, 'redirect'])->setName('oauth.redirect');
+$app->get('/oauth/callback', [OAuthController::class, 'callback'])->setName('oauth.callback');
 $app->get('/login', [LoginController::class, 'show'])->setName('login.show');
 $app->post('/login', [LoginController::class, 'login'])->setName('login');
 $app->map(['GET', 'POST'], '/logout', [LoginController::class, 'logout'])->setName('logout');

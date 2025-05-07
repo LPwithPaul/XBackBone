@@ -61,6 +61,13 @@
                     {% endif %}
                 </div>
             </div>
+            {% if oauth_enabled == 'on' %}
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <a class="btn btn-lg btn-primary btn-block" href="{{ route('oauth.redirect') }}">{{ lang('login_oauth', [oauth_name])}}</a>                    
+                </div>
+            </div>
+            {% endif %}
         </form>
     </div>
 {% endblock %}
